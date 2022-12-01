@@ -15,6 +15,7 @@ jobs:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           files: |
             examples/paper.tex
+            examples/mast6017.tex
             examples/slides.tex
           handouts: |
             examples/slides.tex
