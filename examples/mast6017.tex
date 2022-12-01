@@ -1,0 +1,250 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage[document]{ragged2e}
+\usepackage[margin=1in,footskip=0.25in]{geometry}
+
+\title{MAST6017 - Integration}
+\date{}
+\begin{document}
+
+\maketitle
+\section{Paths}
+\textbf{Definition 1.1} A {\it{path}} is a continuous function $\gamma:[a,b] \rightarrow 	\mathbb{C}$ where $a,b \in \mathbb{R}$ such that $a < b.$
+
+\bigskip
+
+\textbf{Definition 1.2} Let $\gamma:[[a,b] \rightarrow 	\mathbb{C}$ be a path. We say that $\gamma$ is {\it{smooth}} if it is differentiable and $\gamma'$ is continuous.
+
+\bigskip
+
+\textbf{Definition 1.3} Let $\gamma$ be a path. We define the {\it{length}} of $\gamma$ as 
+
+\begin{equation}
+    length(\gamma) = \int_{a}^{b} (|\gamma'(t)|) \, dt
+\end{equation}
+
+\bigskip
+
+\textbf{Definition 1.4} A {\it{contour}} $\gamma$ is a collection of smooth paths 
+
+\begin{equation}
+    \gamma_1, \gamma_2, ..., \gamma_n
+\end{equation}
+
+where the endpoint of $\gamma_r$ coincides with the starting point of $\gamma_{r+1}$, $r \in [1, n-1].$ We shall write 
+
+\begin{equation}
+    \gamma = \gamma_1 + \gamma_2 + ... + \gamma_n.
+\end{equation}
+
+If the endpoint of $\gamma_n$ coincides with the starting point of $\gamma_1$, then we shall say that $\gamma$ is a {\it{closed contour.}} We define
+
+\begin{equation}
+    length(\gamma) = length(\gamma_1) + length(\gamma_2) + ... + length(\gamma_n).
+\end{equation}
+
+\bigskip
+
+\textbf{Definition 1.5} Let $\gamma:[a, b] \rightarrow \mathbb{C}$ be a path. We define $-\gamma:[a, b] \rightarrow \mathbb{C}, t \mapsto -\gamma(t) = \gamma(a + b -t).$
+
+\bigskip
+
+\textbf{Definition 1.6} Let $D \subseteq \mathbb{C}$ be a domain and $f: D \rightarrow \mathbb{C}$ a continuous function. Let $\gamma:[a,b] \rightarrow D$ be a smooth path. The integral of $f$ along $\gamma$ is defined to be 
+
+\begin{equation}
+    \int_{\gamma} f(z) \, dz = \int_{a}^{b} f(\gamma(t))\gamma'(t) \, dt.
+\end{equation}
+
+\bigskip
+
+\textbf{Proposition 1.7} Let $\gamma:[a,b] \rightarrow D \subseteq \mathbb{C}$ where $D$ is a domain, $f: D \rightarrow \mathbb{C}$ a continuous function. Suppose that $\phi:[c,d] \rightarrow [a,b]$ is an increasing smooth bijection. Then $\gamma \circ \phi : [c,d] \rightarrow D, t\mapsto \gamma(\phi(t)))$ is a path with the same image as $\gamma.$ Moreover, 
+
+\begin{equation}
+    \int_{\gamma \circ \phi} f = \int_{\gamma} f
+\end{equation}
+
+\bigskip
+
+\textbf{Proposition 1.8} Let $f, g : D \rightarrow \mathbb{C}$ be continuous functions, and $c \in \mathbb{C}.$ Suppose $\gamma, \gamma_1$ and $\gamma_2$ are contours. Then
+
+\begin{itemize}
+    \item $\int_{\gamma_1 + \gamma_2} f = \int_{\gamma_1} f + \int_{\gamma_2} f$,
+    \item $\int_{\gamma} f + g = \int_{\gamma} f + \int_{\gamma} g$,
+    \item $\int_{\gamma} cf = c \int_{\gamma} f$,
+    \item $\int_{-\gamma} f = - \int_{\gamma} f$.
+\end{itemize}
+
+\bigskip
+
+\section{Fundamental Theorem of Contour Integration}
+
+\textbf{Definition 2.1} Let $D \subseteq \mathbb{C}$ be a domain, $F: D \rightarrow \mathbb{C}$ continuous. Then $F: D \rightarrow \mathbb{C}$ is called an {\it{antiderivative of $f$ on D}} if $f$ is holomorphic on $D$ and $F' = f.$
+
+\bigskip
+
+\textbf{Theorem 2.2 (Fundamental Theorem of Contour Integration, FTCI)} Let $D \subseteq \mathbb{C}$ be a domain, $f: D \rightarrow \mathbb{C}$ a continuous function, and $\gamma:[a,b] \rightarrow \mathbb{C}$ a contour on $D$ joining $z_0$ and $z_1$, with $z_0, z_1 \in D$. Suppose $F: D \rightarrow \mathbb{C}$ is an antiderivative of $f$ on $D$. Then 
+
+\begin{equation}
+    \int_{\gamma} f(z) \, dz = F(z_1) - F(z_0).
+\end{equation}
+
+\bigskip
+
+\textbf{Corrolary 2.3} Under the hypothesis of FTCI, $\int_{\gamma} f$ does not depend on the contour $\gamma$ but on the start and end points. 
+
+\bigskip
+
+\textbf{Corrolary 2.3} Under the hypothesis of FTCI, if $\gamma$ is closed then $\int_{\gamma} f = 0.$
+
+\bigskip
+
+\textbf{Lemma 2.4} Let $u, v:[a,b] \rightarrow \mathbb{R}$ be continuous functions. Then 
+
+\begin{equation}
+    |\int_{a}^{b} (u(t) + iv(t)) \, dt| \leq \int_{a}^{b} |u(t) + iv(t)| \, dt
+\end{equation}
+
+\textbf{Lemma 2.5 (Estimation Lemma)} Let $D \subseteq \mathbb{C}$ be a domain, $\gamma$ be a contour on $D$, and $f:D \rightarrow \mathbb{C}$ a continuous function. Suppose $\exists M > 0$ such that for a continuous function $f:D \rightarrow \mathbb{C}$, $|f(z)|\leq M \ \ \forall z \in f([a,b]).$ 
+
+\bigskip
+
+\section{Winding numbers and Cauchy's Theorem}
+\textbf{Definition 3.1} Let $\gamma$ be a closed path such that $\gamma$ does not pass through the origin. Then we shall call 
+
+\begin{equation}
+    \omega(\gamma, 0) = \frac{1}{2 \pi i} \int_{\gamma} \frac{1}{z} \, dz
+\end{equation}
+
+the {\it{winding number of $\gamma$ around $0.$}}
+
+\bigskip
+
+\textbf{Proposition 3.2} Let $\gamma$ be a closed path such that $\gamma$ does not pass through $z_0 \in \mathbb{C}$. Then 
+
+\begin{equation}
+    \omega(\gamma, z_0) = \frac{1}{2 \pi i} \int_{\gamma} \frac{1}{z-z_0} \, dz.
+\end{equation}
+
+\bigskip
+
+\textbf{Proposition 3.3} (i) Let $\gamma_1, \gamma_2$ be closed paths that do not pass through $z_0 \in \mathbb{C}.$ Then 
+
+\begin{equation}
+\omega(\gamma_1 + \gamma_2, z_0) = \omega(\gamma_1, z_0) + \omega(\gamma_2, z_0).
+\end{equation}
+
+\medskip
+
+(ii) Let $\gamma$ be a closed path not passing through $z_0 \in \mathbb{C}.$ Then
+\begin{equation}
+    \omega(-\gamma, z_0) = -\omega(\gamma, z_0).
+\end{equation}
+
+\bigskip
+
+\textbf{Theorem 3.4 (Cauchy's Theorem)} Let $D \subseteq \mathbb{C}$ be a domain and $f:D \rightarrow \mathbb{C}$ be a function holomorphic in $D$. Suppose that $\gamma$ is a closed contour in $D$ such that $\omega(\gamma, z) = 0$ for any $z \notin D.$ Then $\int_{\gamma} f = 0.$ 
+
+\bigskip
+
+\textbf{Definition 3.5} Let $D \subseteq \mathbb{C}$ be a domain. We say that $D$ is {\it{simply connected}} if $\omega(\gamma, z) = 0 \ \ \forall \gamma$ closed contour in $D$ with $z \notin D.$
+
+\bigskip
+
+\textbf{Theorem 3.6 (Cauchy's Theorem for Simply Connected Domains)} Let $D \subseteq \mathbb{C}$ be a simply connected domain and $f:D \rightarrow \mathbb{C}$ holomorphic. Suppose $\gamma$ is a closed contour in $D.$ Then  $\int_{\gamma} f = 0.$
+\bigskip
+
+\textbf{Theorem 3.7 (Generalised Cauchy's Theorem)} Let D be a domain and $f:D \rightarrow \mathbb{C}$ holomorphic. Suppose that $\gamma_1, \gamma_2, ..., \gamma_n$ are closed contours in $D$ such that $\omega(\gamma_1, z) + \omega(\gamma_2, z) + ... + \omega(\gamma_n, z) = 0 \ \ \forall z \notin D.$ Then 
+
+\begin{equation}
+    \int_{\gamma_1} f + \int_{\gamma_2} f + ... + \int_{\gamma_n} f = 0.
+\end{equation}
+
+\bigskip
+
+\section{Cauchy's Integral Formula and Taylor's Theorem}
+
+\textbf{Theorem 4.1 (Cauchy's Integral Formula for a Circle)} Let $R>0, \ z_0 \in \mathbb{C}, \ D = \{z \in \mathbb{C} \ / \ |z - z_0| < R\} \subseteq \mathbb{C}.$ Let $f:D \rightarrow \mathbb{C}$ be holomorphic on $D$. Let $0 < r < R, \ C_r:[0, 2\pi] \rightarrow \mathbb{C}, \ t \mapsto C_r(t) = z_0 + re^{it}$. Then 
+
+\begin{equation}
+    f(\omega) = \frac{1}{2\pi i} \int_{C_r} \frac{f(z)}{z-\omega} \, dz,
+\end{equation}
+
+with $|\omega - z_0| < R.$
+
+\bigskip
+
+\textbf{Theorem 4.2 (Cauchy's Integral Formula)} Let $D \subseteq \mathbb{C}$ be a domain, $f:D \rightarrow \mathbb{C}$ holomorphic. Suppose $\gamma$ is a simple closed contour in D, and D contains $\gamma$ and its interior (with $D$ having no holes in the interior of $\gamma$; $\gamma$ anti-clockwise). Then 
+
+\begin{equation}
+    f(z_0) = \frac{1}{2 \pi i} \int_{\gamma} \frac{f(z)}{z - z_0} \, dz
+\end{equation}
+
+$\forall z_0$ inside $\mathbb{C}.$
+
+\textbf{Theorem 4.3 (Taylor's Theorem)} Let $D \subseteq \mathbb{C}$ be a domain and suppose $f:D \rightarrow \mathbb{C}$ is holomorphic. Then all the higher derivatives of f exist in $D$ and on the disc 
+
+\begin{equation}
+    \{z \in \mathbb{C} \ / \ |z - z_0| < R\} \subset D,
+\end{equation}
+
+$f$ has a Taylor expansion given by 
+
+\begin{equation}
+    f(z) = \sum_{n = 0}^{\infty} \frac{f^{(n)}(z_0)}{n!}(z - z_0)^{n}.
+\end{equation}
+
+Moreover,  if $0 < r < R$ and $C_r(t) = z_0 + re^{it}, \ t \in [0, 2\pi]$ then 
+
+\begin{equation}
+    f^{(n)}(z_0) = \frac{n!}{2 \pi i} \int_{C_r} \frac{f(z)}{(z - z_0)^{n+1}} \, dz.
+\end{equation}
+
+\bigskip
+
+\textbf{Proposition 4.4} Suppose that 
+
+\begin{equation}
+    \sum_{n = 0}^{\infty} a_n(z - z_0)^n = \sum_{n = 0}^{\infty} b_n(z - z_0)^n
+\end{equation}
+
+$\forall z \in \mathbb{C}$ such that $|z-z_0|<R.$ Then $a_n = b_n \ \forall n \in \mathbb{N}.$
+
+\bigskip
+
+\textbf{Theorem 4.5 (Cauchy's Estimate)} Let $D = \{ z \in \mathbb{C} \ / \ |z-z_0|<R \} \subseteq \mathbb{C}.$ If $0<r<R$ and $|f(z)| \leq M$ for $|z-z_0| = r$ then 
+
+\begin{equation}
+    |f^{(n)}(z_0)| \leq \frac{Mn!}{r^n}
+\end{equation}
+
+$\forall n \geq 0.$
+
+\bigskip
+
+\textbf{Definition 4.6} Let $z_0 \in D$ where $D$ is a domain. A function $f:D \rightarrow \mathbb{C}$ is called {\it{analytic}} if $f$ is equal to its Taylor series expansion at $z_0$ on some open disc.
+
+\bigskip
+
+\textbf{Remark 4.7} Since Taylor's Theorem says that 
+
+\begin{equation}
+    f(z) = \sum_{n = 0}^{\infty} \frac{f^{(n)}(z_0)}{n!}(z-z_0)^n
+\end{equation}
+
+on some open disc, we know that any holomorphic function is analytic. 
+
+\bigskip
+
+\textbf{Theorem 4.8 (Liouville Theorem)} If $f$ is a holomorphic function and bounded on $\mathbb{C},$ (i.e. $\exists \ M>0 \ / \ |f(z)| \leq M \ \forall z \in \mathbb{C}$), then $f$ is constant. 
+
+\bigskip
+
+\textbf{Theorem 4.9 (Fundamental Theorem of Algebra)} Let $p(z) = z^n + a_{n-1}z^{n-1} + ... + a_1z_1 + a_0$ be a polynomial of degree $n \geq 1$ where $a_j \in \mathbb{C} \ \ \forall j \in \{0, 1, ..., n-1 \}.$ Then $\exists \ \alpha \in \mathbb{C}$ such that $p(\alpha) = 0.$
+
+\end{document}
+
+
+
+
+
